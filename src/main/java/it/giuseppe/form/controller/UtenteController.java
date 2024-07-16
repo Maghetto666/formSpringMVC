@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Objects;
+
 @Controller
 public class UtenteController {
 
@@ -32,11 +34,12 @@ public class UtenteController {
                 if (!(current == '+' || current == ' ')) {
                     return "error";
                 }
-
             }
         }
 
-
+        if (!Objects.equals(utente.getPassword(), utente.getConfermaPassword())) {
+            return "error";
+        }
         model.addAttribute("utente", utente);
         return "result";
     }
