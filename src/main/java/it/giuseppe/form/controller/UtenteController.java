@@ -24,7 +24,22 @@ public class UtenteController {
             return "error";
         }
 
+        for (int i = 0; i < utente.getNumeroDiTelefono().length(); i++) {
+            char current = utente.getNumeroDiTelefono().charAt(i);
+            try {
+                Integer.parseInt(current + "");
+            } catch (Exception nfEx) {
+                if (!(current == '+' || current == ' ')) {
+                    return "error";
+                }
+
+            }
+        }
+
+
         model.addAttribute("utente", utente);
         return "result";
     }
+
+
 }
