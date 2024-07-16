@@ -19,8 +19,12 @@ public class UtenteController {
     public String postForm(@ModelAttribute Utente utente, Model model) {
         if ((utente.getNome().equalsIgnoreCase("admin")) || (utente.getNome().equalsIgnoreCase("root"))) {
             return "error";
-        } else {
+        }
+        if (utente.getNome().length() < 2 || utente.getNome().length() > 20) {
+            return "error";
+        }
+
         model.addAttribute("utente", utente);
-        return "result";}
+        return "result";
     }
 }
