@@ -17,7 +17,7 @@ public class UtenteController {
 
     @PostMapping("/submitForm")
     public String postForm(@ModelAttribute Utente utente, Model model) {
-        if ((!utente.getNome().equalsIgnoreCase("admin")) || (!utente.getNome().equalsIgnoreCase("root"))) {
+        if ((utente.getNome().equalsIgnoreCase("admin")) || (utente.getNome().equalsIgnoreCase("root"))) {
             return "error";
         } else {
         model.addAttribute("utente", utente);
