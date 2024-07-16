@@ -13,5 +13,5 @@ public class Utente {
     private String password;
     private String confermaPassword;
     private String dataDiNascita;
-    private long numeroDiTelefono;
+    private String numeroDiTelefono;
 }

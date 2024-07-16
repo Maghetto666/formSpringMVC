@@ -15,14 +15,12 @@ public class UtenteController {
         return "form";
     }
 
-    @GetMapping("/form2")
-    public String getForm2(@ModelAttribute Utente utente) {
-        return "form2";
-    }
-
     @PostMapping("/submitForm")
     public String postForm(@ModelAttribute Utente utente, Model model) {
+        if ((!utente.getNome().equalsIgnoreCase("admin")) || (!utente.getNome().equalsIgnoreCase("root"))) {
+            return "error";
+        } else {
         model.addAttribute("utente", utente);
-        return "result";
+        return "result";}
     }
 }
