@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="eng">
     <head>
         <title>Registrazione utente</title>
     </head>
     <body>
         <h1>Form Utente</h1>
-        <form action="/submitForm" method="post">
+        <form action="/submitForm" method="post" th:object="${utente}">
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+            <input type="text" id="nome" th:field="*{nome}" required>
+            <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
             <br><br>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="text" id="email" th:field="*{email}" required>
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
             <br><br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
